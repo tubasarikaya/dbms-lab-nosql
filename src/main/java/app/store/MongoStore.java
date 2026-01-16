@@ -15,6 +15,7 @@ public class MongoStore {
         client = MongoClients.create("mongodb://localhost:27017");
         collection = client.getDatabase("nosqllab").getCollection("students");
         collection.drop();
+        collection.createIndex(new Document("student_no", 1));
         System.out.println("MongoDB: Inserting 10,000 students...");
         for (int i = 0; i < 10000; i++) {
             String id = "2025" + String.format("%06d", i);
